@@ -1,42 +1,35 @@
-//944. Delete Columns to Make Sorted
+
+//Detect Capital
 /*
- * You are given an array of n strings strs, all of the same length.
+ * We define the usage of capitals in a word to be right when one of the following cases holds:
 
-The strings can be arranged such that there is one on each line, making a grid. For example, 
-strs = ["abc", "bce", "cae"] can be arranged as:
-
-abc
-bce
-cae
-You want to delete the columns that are not sorted lexicographically. In the above example (0-indexed),
- columns 0 ('a', 'b', 'c') and 2 ('c', 'e', 'e') are sorted while column 1 ('b', 'c', 'a') is not, so you would delete column 1.
-
-Return the number of columns that you will delete.
-
- 
+All letters in this word are capitals, like "USA".
+All letters in this word are not capitals, like "leetcode".
+Only the first letter in this word is capital, like "Google".
+Given a string word, return true if the usage of capitals in it is right.
  */
 public class Jan2 {
-  //daily challenge
-  public int minDeletionSize(String[] strs) {
-    // boolean flag=true;
-    int n=strs.length;//n is number of rows
-    int m=strs[0].length();//m is number of columns
-
-     int cnt=0;
-     //travel all columns
-
- for(int col=0;col<m;col++){
-     for(int row=1;row<n;row++){
-         char c=strs[row-1].charAt(col);
-         char d=strs[row].charAt(col);
-         if(d<c){
-             
-             cnt++;
-             break;
-         }
-     }
-     
- }//end of i loop
-    return cnt;
-}  
+    public boolean detectCapitalUse(String word) {
+        //3 cases
+        int upper=0;
+        int lower=0;
+        boolean flag=false;
+        for(int i=0;i<word.length();i++){
+            char c=word.charAt(i);
+            if(Character.isUpperCase(c))upper++;
+            else{
+                lower++;
+            }
+            
+        }
+        if(upper==word.length() || lower==word.length()){
+            flag=true;
+        }else if((Character.isUpperCase(word.charAt(0))) && lower==word.length()-1){
+            flag=true;
+        }
+        if(flag){
+            return true;
+        }
+        return false;
+    }
 }
