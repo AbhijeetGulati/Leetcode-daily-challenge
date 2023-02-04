@@ -10,7 +10,7 @@ Given two strings str1 and str2, return the largest string x such that x divides
 
 package February;
 
-public class Feb1 {
+public class Feb1 {//using recursion
     public String gcdOfStrings(String str1, String str2) {
         if(!(str1+str2).equals(str2+str1)){
             //then no common divisor will be there
