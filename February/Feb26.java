@@ -11,6 +11,19 @@ Replace a character
  */
 public class Feb26 {//dynamic programming on strings
     //using memoization 
+    public int minDistance(String word1, String word2) {
+        int n=word1.length();
+        int m=word2.length();
+        //dp of size n*m
+            int[][] dp=new int[n][m];
+            for(int i=0;i<n;i++){
+                for(int j=0;j<m;j++){
+                    dp[i][j]=-1;
+                }
+            }
+            return helperSt(n-1,m-1,word1,word2,dp);
+    
+        }
     //helper function
     public int helperSt(int i, int j, String word1, String word2, int[][] dp){
         //base case
